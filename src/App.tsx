@@ -1,9 +1,5 @@
-import { AddTask, TaskItem } from './components';
+import { AddTask, Heading, TaskItem } from './components';
 import { useTodo } from './hooks';
-
-const Heading: React.FC = ({ children }) => {
-  return <h1 className="heading">{children}</h1>;
-};
 
 function App() {
   const { todos, onRemove, onComplete } = useTodo();

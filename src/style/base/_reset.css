@@ -34,11 +34,6 @@ body {
   min-height: 100vh;
 }
 
-.heading {
-  text-transform: uppercase;
-  font-size: 6.4rem;
-}
-
 .wrapper {
   padding: 0 2.4rem;
 }
