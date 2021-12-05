@@ -26,7 +26,7 @@ export const TodoProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const savedTodos = LocalStorageAdapter.get(todosKeyName);
-    setTodos(savedTodos);
+    setTodos(savedTodos || []);
   }, []);
 
   const onComplete = (todoId: string) => {
