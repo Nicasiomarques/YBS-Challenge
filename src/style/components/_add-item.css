@@ -1,0 +1,72 @@
+.add-task {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-task .add-task__icon-wrapper {
+  margin-right: 2.6rem;
+}
+
+.add-task__input {
+  align-self: stretch;
+  border: none;
+  height: 3rem;
+  padding: 1rem 3rem;
+  outline: none;
+}
+
+.add-task .add-task__input::placeholder {
+  color: #66666680;
+  font-size: 1.8rem;
+}
+
+.add-task__wrapper {
+  padding: 0 2.4rem;
+  position: relative;
+}
+
+.color-choser__wrapper {
+  display: inline-flex;
+}
+
+.color-choser {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  padding: 1.4rem 0.8rem;
+  background-color: var(--color-gray-light);
+  border-radius: 0.8rem;
+}
+@media only screen and (min-width: 768px) {
+  .add-task__wrapper,
+  .add-task {
+    display: inline-flex;
+    height: 4.5rem;
+    margin-top: 3rem;
+  }
+}
+
+.color-choser__color {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: 1.4rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+.color-choser__color--selected__wrapper {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+  width: 6rem;
+  border-radius: 0.6rem;
+}
+
+.color-choser__color--selected {
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.task__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 2.4rem;
+  background: #fff;
+  text-decoration: line-through;
+}
+
+.task__wrapper:hover {
+  background: linear-gradient(
+    272.09deg,
+    var(--color-gray-light) 32.81%,
+    #daefff 100%
+  );
+}
+
+.task__wrapper .task__checkbox {
+  margin-right: 2.4rem;
+}
+
+.task__wrapper .task__description {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: var(--font-color);
+}

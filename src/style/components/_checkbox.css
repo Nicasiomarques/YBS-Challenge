@@ -1,0 +1,101 @@
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 2.4rem;
+  width: 100%;
+  border-radius: 2.4rem;
+}
+
+.checkbox .checkbox__text {
+  margin-right: auto;
+}
+
+.checkbox--blue:hover {
+  background: linear-gradient(
+    272.09deg,
+    var(--color-gray-light) 32.81%,
+    rgba(8, 146, 252, 0.3)
+  );
+}
+
+.checkbox--green:hover {
+  background: linear-gradient(
+    272.09deg,
+    var(--color-gray-light) 32.81%,
+    rgba(0, 168, 99, 0.3)
+  );
+}
+
+.checkbox--orange:hover {
+  background: linear-gradient(
+    272.09deg,
+    var(--color-gray-light) 32.81%,
+    rgba(255, 111, 89, 0.3)
+  );
+}
+
+.checkbox--violet:hover {
+  background: linear-gradient(
+    272.09deg,
+    var(--color-gray-light) 32.81%,
+    rgba(127, 67, 255, 0.3)
+  );
+}
+
+.checkbox .checkbox__input {
+  display: none;
+}
+
+.checkbox .checkbox__box {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2.4rem;
+  flex-shrink: 0;
+}
+
+.checkbox .checkbox__box::after {
+  content: '\2714';
+  color: #fff;
+}
+
+.checkbox--blue .checkbox__box {
+  border: 3px solid var(--color-blue);
+}
+
+.checkbox--blue .checkbox__input:checked + .checkbox__box {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+.checkbox--violet .checkbox__box {
+  border: 3px solid var(--color-violet);
+}
+
+.checkbox--violet .checkbox__input:checked + .checkbox__box {
+  background: var(--color-violet);
+  border-color: var(--color-violet);
+}
+
+.checkbox--orange .checkbox__box {
+  border: 3px solid var(--color-orange);
+}
+
+.checkbox--orange .checkbox__input:checked + .checkbox__box {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.checkbox--green .checkbox__box {
+  border: 3px solid var(--color-green);
+}
+
+.checkbox--green .checkbox__input:checked + .checkbox__box {
+  background: var(--color-green);
+  border-color: var(--color-green);
+}
