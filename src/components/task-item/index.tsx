@@ -15,7 +15,7 @@ type TaskItemProps = DetailedHTMLProps<
 
 export const TaskItem: FC<TaskItemProps> = ({ children, ...props }) => {
   const hash = randomHash();
-  const { toggle: toggleRemoveVisivility, state: removeIsVisible } =
+  const { toggle: toggleRemoveVisibility, state: removeIsVisible } =
     useToggle();
 
   const styleChecked = (done?: boolean) =>
@@ -25,8 +25,8 @@ export const TaskItem: FC<TaskItemProps> = ({ children, ...props }) => {
     <label
       className={`checkbox checkbox--${props.variantColor}`}
       htmlFor={hash}
-      onMouseEnter={toggleRemoveVisivility}
-      onMouseLeave={toggleRemoveVisivility}
+      onMouseEnter={toggleRemoveVisibility}
+      onMouseLeave={toggleRemoveVisibility}
     >
       <input className="checkbox__input" {...props} type="checkbox" id={hash} />
       <div className="checkbox__box"></div>
