@@ -21,7 +21,7 @@ const TodoContext = createContext({} as TodoContextProps);
 
 const taskState = createTaskState();
 
-export const TodoProvider: React.FC = ({ children }) => {
+export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <TodoContext.Provider value={{ ...taskState, todos: taskState.todos.value }}>
       {children}
