@@ -8,11 +8,7 @@
 }
 
 .task__wrapper:hover {
-  background: linear-gradient(
-    272.09deg,
-    var(--color-gray-light) 32.81%,
-    #daefff 100%
-  );
+  background: linear-gradient(272.09deg, var(--color-gray-light) 32.81%, #daefff 100%);
 }
 
 .task__wrapper .task__checkbox {
