@@ -1,28 +1,21 @@
 import { AddTask, Heading, TaskItem } from './components';
+import { randomHash } from './helpers';
 import { useTodo } from './hooks';
 
 function App() {
-  const { todos, onRemove, onComplete } = useTodo();
+  const { todos} = useTodo();
   return (
     <div className="wrapper">
       <div>
         <Heading>To do</Heading>
         <ul className="list">
           {todos.map((todo) => (
-            <li className="list__item">
-              <TaskItem
-                onChange={() => onComplete(todo.id)}
-                onRemove={() => onRemove(todo.id)}
-                checked={todo.completed}
-                variantColor={todo.color}
-              >
-                {todo.text}
-              </TaskItem>
+            <li key={randomHash()} className="list__item">
+              <TaskItem {...todo}>{todo.text}</TaskItem>
             </li>
           ))}
         </ul>
       </div>
-
       <AddTask />
     </div>
   );
