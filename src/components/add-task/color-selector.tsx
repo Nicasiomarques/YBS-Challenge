@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 
 import { Colors, TodoProps, useToggle } from '../../hooks';
 import { randomHash } from '../../helpers';
-import { Icon } from '../icon';
+import { DropdownIcon } from '../icon';
 
 type ColorSelectorProps = {
   onSelectColor: Dispatch<SetStateAction<TodoProps>>;
@@ -33,7 +33,7 @@ export const ColorSelector = ({ onSelectColor }: ColorSelectorProps) => {
           className="color-choser__color color-choser__color--selected"
           style={{ background: selectedColor || colors.blue }}
         />
-        <Icon icon="dropdown" />
+        <DropdownIcon />
       </div>
 
       {colorOptions && (

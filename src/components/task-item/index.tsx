@@ -1,39 +1,43 @@
-import { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react';
+import { FC, ComponentProps } from "react";
 
-import { ButtonCancel } from '../button-icon';
-import { randomHash } from '../../helpers';
-import { Colors } from '../../hooks';
-import { useToggle } from '../../hooks/use-toggle';
+import { useToggle } from "../../hooks/use-toggle";
+import { ButtonCancel } from "../button-icon";
+import { Colors, useTodo } from "../../hooks";
+import { randomHash } from "../../helpers";
 
-type TaskItemProps = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
-  variantColor: Colors;
-  onRemove: () => void;
+type TaskItemProps = ComponentProps<"input"> & {
+  completed: boolean;
+  color: Colors;
+  id: string;
 };
 
-export const TaskItem: FC<TaskItemProps> = ({ children, ...props }) => {
+export const TaskItem: FC<TaskItemProps> = ({ children, id, completed, ...props }) => {
   const hash = randomHash();
-  const { toggle: toggleRemoveVisibility, state: removeIsVisible } =
-    useToggle();
+  const { toggle, state } = useToggle(false);
+  const { onRemove, onComplete } = useTodo();
 
   const styleChecked = (done?: boolean) =>
-    done ? { textDecoration: 'line-through', color: '#33333380' } : {};
+    done ? { textDecoration: "line-through", color: "#33333380" } : {};
 
   return (
     <label
-      className={`checkbox checkbox--${props.variantColor}`}
+      className={`checkbox checkbox--${props.color}`}
+      onMouseEnter={toggle}
+      onMouseLeave={toggle}
       htmlFor={hash}
-      onMouseEnter={toggleRemoveVisibility}
-      onMouseLeave={toggleRemoveVisibility}
     >
-      <input className="checkbox__input" {...props} type="checkbox" id={hash} />
-      <div className="checkbox__box"></div>
-      <span style={styleChecked(props.checked)} className="checkbox__text">
+      <input
+        onChange={() => onComplete(id)}
+        className='checkbox__input'
+        checked={completed}
+        type='checkbox'
+        id={hash}
+      />
+      <div className='checkbox__box'></div>
+      <span style={styleChecked(props.checked)} className='checkbox__text'>
         {children}
       </span>
-      {removeIsVisible && <ButtonCancel onClick={props.onRemove} />}
+      {state && <ButtonCancel onClick={() => onRemove(id)} />}
     </label>
   );
 };

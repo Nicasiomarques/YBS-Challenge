@@ -1,10 +1,8 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
-import { Icon } from '../icon';
+import { ComponentProps, FC } from "react";
+import { CancelIcon } from "../icon";
 
-export const ButtonCancel: FC<
-  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-> = ({ ...props }) => (
-  <button {...props} className="btn">
-    <Icon icon="cancel" />
+export const ButtonCancel: FC<ComponentProps<"button">> = props => (
+  <button className='btn' {...props}>
+    <CancelIcon />
   </button>
 );
