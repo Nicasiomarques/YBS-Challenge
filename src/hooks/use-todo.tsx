@@ -1,9 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { LocalStorageAdapter } from '../helpers/cache/local-storage-adapter';
+import React, { createContext } from "react";
+import { createTaskState } from "./todos-state";
 
-export type Colors = 'blue' | 'violet' | 'green' | 'orange';
-
-const todosKeyName = '@App:Todos';
+export type Colors = "blue" | "violet" | "green" | "orange";
 
 export type TodoProps = {
   id: string;
@@ -21,36 +19,11 @@ type TodoContextProps = {
 
 const TodoContext = createContext({} as TodoContextProps);
 
+const taskState = createTaskState();
+
 export const TodoProvider: React.FC = ({ children }) => {
-  const [todos, setTodos] = useState<TodoProps[]>([]);
-
-  useEffect(() => {
-    const savedTodos = LocalStorageAdapter.get(todosKeyName);
-    setTodos(savedTodos || []);
-  }, []);
-
-  const onComplete = (todoId: string) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-    );
-    LocalStorageAdapter.set(todosKeyName, updatedTodos);
-    setTodos(updatedTodos);
-  };
-
-  const onAdd = (newTodo: TodoProps) => {
-    const updatedTodos = [...todos, newTodo];
-    LocalStorageAdapter.set(todosKeyName, updatedTodos);
-    setTodos(updatedTodos);
-  };
-
-  const onRemove = (todoId: string) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== todoId);
-    LocalStorageAdapter.set(todosKeyName, updatedTodos);
-    setTodos(updatedTodos);
-  };
-
   return (
-    <TodoContext.Provider value={{ todos, onComplete, onRemove, onAdd }}>
+    <TodoContext.Provider value={{ ...taskState, todos: taskState.todos.value }}>
       {children}
     </TodoContext.Provider>
   );
