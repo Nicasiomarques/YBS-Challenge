@@ -1,13 +1,11 @@
 export const LocalStorageAdapter = {
   set(key: string, value: object): void {
-    if (value) {
-      localStorage.setItem(key, JSON.stringify(value));
-    } else {
-      localStorage.removeItem(key);
-    }
+    value ? localStorage.setItem(key, JSON.stringify(value)) : localStorage.removeItem(key);
   },
 
   get(key: string): any {
-    return JSON.parse(localStorage.getItem(key));
+    const cachedData = localStorage.getItem(key)
+    if (cachedData) return JSON.parse(cachedData)
+    return null
   },
 };
